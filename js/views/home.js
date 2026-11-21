@@ -1,0 +1,5 @@
+const best=n=>Math.max(0,...hist.filter(h=>h.f===n).map(h=>h.total));
+function cards(){return `<div class="grid">`+F.map((f,i)=>`<button class="card" style="--f:${f.col}" data-i="${i}">${scene(i,f.col)}<div class="tx"><h3>${f.n}</h3><span class="muted">${f.ro}</span><span class="pill" style="background:${f.col}22;color:${f.col}">${best(f.n)?'Meilleur score : '+best(f.n):BANK[f.n]?'30 questions · 3 niveaux':'3 décisions · 5 min'}</span></div></button>`).join('')+`</div>`}
+function wire(){document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{cur=+c.dataset.i;nav('setup')})}
+function home(){app.innerHTML=`<div class="hero"><div><h1>Faites le métier avant d’avoir le poste.</h1><p class="lede">Huit spécialités, huit situations professionnelles réalistes. Décidez sous pression, constatez les conséquences et recevez une orientation métier personnalisée.</p><div class="row"><button class="btn" id="go">Choisir ma spécialité</button></div></div>${scene(0,'#6d4fd1').replace('<svg','<svg style="border-radius:18px;width:100%;color:#6d4fd1"')}</div><h2>Spécialités</h2>${cards()}`;
+$('#go').onclick=()=>nav('missions');wire()}
