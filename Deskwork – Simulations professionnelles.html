@@ -5,174 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Deskwork – Apprendre en exerçant le métier</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f4f1fb;--panel:#fff;--ink:#1b1f3b;--mute:#5d6280;--line:#dcd8ee;--acc:#6d4fd1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12142a;--panel:#1d2040;--ink:#eceefb;--mute:#a4a9c8;--line:#32365e}}
-:root[data-theme="dark"]{--bg:#12142a;--panel:#1d2040;--ink:#eceefb;--mute:#a4a9c8;--line:#32365e}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(900px 400px at 85% -5%,color-mix(in srgb,#e8761b 14%,transparent),transparent),radial-gradient(800px 400px at 0 0,color-mix(in srgb,#2563eb 14%,transparent),transparent),var(--bg);background-attachment:fixed;color:var(--ink);font:16px/1.55 'IBM Plex Sans',system-ui,sans-serif}
-h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.1;margin:0 0 .5em;letter-spacing:-.02em}
-h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:800}h2{font-size:1.7rem}h3{font-size:1.15rem}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
-header .wrap{display:flex;align-items:center;gap:14px;height:58px}
-.logo{font:800 1.3rem 'Bricolage Grotesque';margin-right:auto;background:linear-gradient(90deg,#6d4fd1,#d6336c,#e8761b);-webkit-background-clip:text;background-clip:text;color:transparent}
-nav{display:flex;gap:2px}nav button{background:none;border:0;color:var(--mute);font:500 .93rem 'IBM Plex Sans';padding:8px 10px;cursor:pointer;border-radius:8px}
-nav button.on,nav button:hover{color:var(--ink);background:color-mix(in srgb,var(--acc) 14%,var(--panel))}
-button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-main{padding:34px 0 60px}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;margin-bottom:44px}
-@media(max-width:720px){.hero{grid-template-columns:1fr}}
-.lede{color:var(--mute);font-size:1.08rem;max-width:52ch}
-.btn{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 20px;font:600 1rem 'IBM Plex Sans';cursor:pointer}
-.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-.memo{border-left:6px solid var(--acc)}.memo small{color:var(--acc);font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:16px}
-.card{--f:#6d4fd1;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;cursor:pointer;transition:transform .15s}
-.card:hover{transform:translateY(-3px);border-color:var(--f)}
-.card svg{display:block;width:100%;height:auto}.card .tx{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
-.card h3{margin:0;color:var(--f)}.card .muted{font-size:.92rem}
-.pill{display:inline-block;font-size:.78rem;padding:2px 10px;border-radius:99px;background:color-mix(in srgb,var(--acc) 15%,var(--panel));color:var(--acc);font-weight:600;width:fit-content}
-.opts{display:grid;gap:10px;margin:16px 0}
-.opt{text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer}
-.opt:hover{border-color:var(--acc)}.opt[disabled]{cursor:default}
-.opt.best{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,var(--panel))}.opt.pick{outline:2px solid var(--ink)}
-.opt b{display:block}.opt span{color:var(--mute);font-size:.92rem}
-.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-@media(max-width:560px){.meters{grid-template-columns:repeat(2,1fr)}}
-.m{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;border-top:4px solid var(--acc)}
-.m small{color:var(--mute);display:block}.m strong{font:800 1.5rem 'Bricolage Grotesque'}
-.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}
-.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.sk{display:grid;grid-template-columns:170px 1fr 44px;gap:12px;align-items:center;margin:10px 0}
-@media(max-width:520px){.sk{grid-template-columns:110px 1fr 38px}}
-.hint{background:color-mix(in srgb,var(--acc) 14%,var(--panel));border-radius:10px;padding:10px 14px;margin:10px 0;display:none}
-.fb{background:color-mix(in srgb,var(--acc) 12%,var(--panel));border-radius:10px;padding:10px 14px;margin-top:12px}
-.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.seg button{background:var(--panel);border:0;color:var(--ink);padding:8px 14px;font:inherit;cursor:pointer}
-.seg button.on{background:var(--ink);color:var(--bg)}
-.top{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center;margin-bottom:18px}
-@media(max-width:620px){.top{grid-template-columns:1fr}}
-.top svg{width:100%;border-radius:14px}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
-.muted{color:var(--mute)}.tw{background:color-mix(in srgb,#e8761b 16%,var(--panel));border-radius:10px;padding:10px 14px;margin:0 0 12px}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header><div class="wrap"><div class="logo">Deskwork</div>
-<nav><button data-v="home" class="on">Accueil</button><button data-v="missions">Spécialités</button><button data-v="dash">Ma progression</button></nav>
+<nav><button data-v="home" class="on">Accueil</button><button data-v="missions">Spécialités</button><button data-v="dash">Ma progression</button></nav><button class="tg on" id="sfx" aria-pressed="true">Sons</button><button class="tg" id="mus" aria-pressed="false">Musique</button>
 </div></header>
 <main><div class="wrap" id="app"></div></main>
-<script>
-const $=s=>document.querySelector(s),app=$('#app');
-const SK=['Analyse','Gestion des risques','Prise de décision','Adaptabilité'];
-const SKIN=['#f1c9a5','#c68a5e','#8d5a3b','#e3b48c'],CLO=['#1b1f3b','#e8761b','#d6336c','#2563eb'];
-// props: décor central de chaque spécialité (couleur = currentColor)
-const PR=['<rect x="100" y="70" width="10" height="20"/><rect x="115" y="55" width="10" height="35"/><rect x="130" y="62" width="10" height="28"/>',
-'<rect x="100" y="48" width="30" height="40" rx="3"/><circle cx="138" cy="76" r="10" fill="none" stroke="currentColor" stroke-width="4"/><path d="M145 84l9 9" stroke="currentColor" stroke-width="4"/>',
-'<path d="M98 88a22 22 0 0144 0z"/><path d="M120 88l12-20" stroke="#fff" stroke-width="3"/>',
-'<rect x="94" y="48" width="34" height="22" rx="8"/><rect x="116" y="74" width="34" height="22" rx="8" opacity=".6"/>',
-'<rect x="96" y="66" width="22" height="22"/><rect x="122" y="66" width="22" height="22" opacity=".6"/><rect x="109" y="44" width="22" height="22" opacity=".8"/>',
-'<path d="M98 66l34-14v44l-34-14z"/><rect x="92" y="64" width="10" height="18" rx="3"/><circle cx="142" cy="74" r="4"/>',
-'<circle cx="120" cy="64" r="16"/><rect x="113" y="80" width="14" height="8" rx="2"/>',
-'<rect x="108" y="48" width="24" height="12" rx="3"/><rect x="92" y="75" width="22" height="12" rx="3"/><rect x="126" y="75" width="22" height="12" rx="3"/><path d="M120 60v8M103 75v-7h34v7" stroke="currentColor" fill="none" stroke-width="2"/>'];
-function scene(i,col){const p=(x,k)=>`<circle cx="${x}" cy="82" r="12" fill="${SKIN[(i+k)%4]}"/><rect x="${x-15}" y="96" width="30" height="40" rx="13" fill="${CLO[(i+k+1)%4]}"/>`;
-return `<svg viewBox="0 0 240 140" role="img" aria-label="Illustration du métier" style="color:${col}"><rect width="240" height="140" fill="${col}" opacity=".16"/><circle cx="205" cy="28" r="40" fill="${col}" opacity=".18"/><g fill="currentColor">${PR[i]}</g>${p(62,0)}${p(178,2)}<rect y="124" width="240" height="16" fill="${col}" opacity=".5"/></svg>`}
-// mètres [libellé, unité, départ] ; options [libellé, explication, effets[3], qualités "analyse/risque/décision/adaptation"]
-const F=[
-{n:'Finance',col:'#0f7b6c',ro:'Directeur financier en pleine crise de trésorerie.',car:'DAF, trésorier, analyste financier',ctx:'Halden Composants a 480 k€ en banque, une paie de 210 k€ dans deux semaines et un gros client qui n’a pas payé. Le conseil attend votre plan.',m:[['Trésorerie',' k€',480],['Confiance fournisseurs','/10',6],['Exposition au risque','/10',2]],
-tw:['Votre rigueur rassure la banque.','Des fournisseurs s’inquiètent de vos retards.'],
-r:[{t:'Semaine 1 · Le retard de paiement',q:'Votre premier client, qui vous doit 200 k€, paie en retard. Les factures fournisseurs s’élèvent à 190 k€. Que faites-vous ?',h:'Cherchez du cash sans casser les relations dont vous aurez besoin.',o:[['Négocier 60 jours avec votre principal fournisseur','Vous demandez avant de faire défaut.',[90,-1,0],'8767'],['Utiliser la ligne de crédit à 11 %','Rapide, mais coûteux en intérêts.',[150,0,1],'5463'],['Retarder discrètement tous les paiements','Les fournisseurs le remarqueront.',[190,-3,2],'2132']]},
-{t:'Semaine 3 · Réduire les coûts',q:'Le conseil veut des dépenses en baisse. Les données sont imparfaites.',h:'Une économie vaut mieux quand on sait où va l’argent.',o:[['Auditer les dépenses puis couper de façon ciblée','Plus lent, mais plus efficace.',[40,0,0],'9887'],['Réduire chaque service de 10 %','Simple et grossier.',[60,0,1],'3343'],['Ignorer les coûts et viser de nouveaux revenus','Le chiffre d’affaires n’est pas garanti.',[0,0,2],'2232']]},
-{t:'Semaine 5 · Un investissement',q:'Une machine réduirait vos coûts de 12 %. Elle coûte 120 k€ à l’achat.',h:'Un bon investissement peut vider vos réserves.',o:[['La louer pour 4 k€ par mois','Vous gardez vos réserves.',[-12,0,0],'8787'],['L’acheter comptant','Gros choc de trésorerie.',[-120,0,1],'4354'],['Placer le cash en actions','Vous jouez la paie en bourse.',[-50,0,2],'2132']]}]},
-{n:'Audit',col:'#6d4fd1',ro:'Auditeur dans un cabinet, en mission chez un client.',car:'Commissaire aux comptes, auditeur interne, risk manager',ctx:'Vous êtes auditeur junior chez Vérax. Vous certifiez les comptes d’Orenda SA, dont le directeur financier est très pressé.',m:[['Couverture de l’audit','%',10],['Risque résiduel','/100',50],['Relation client','/10',7]],
-tw:['Votre dossier solide impressionne l’associé.','Des lacunes dans vos preuves inquiètent l’associé.'],
-r:[{t:'Phase 1 · Planification',q:'Le client veut que vous commenciez par la trésorerie. Comment démarrez-vous ?',h:'Un audit commence par les risques, pas par l’ordre du client.',o:[['Évaluer les risques et fixer le seuil de signification','Vous concentrez l’effort où ça compte.',[25,-15,0],'9887'],['Suivre l’ordre voulu par le client','Pratique, mais pas fondé sur le risque.',[15,0,1],'4344'],['Tester toutes les écritures','Exhaustif, mais impossible dans les délais.',[30,-5,-1],'4233']]},
-{t:'Phase 2 · Terrain',q:'Les stocks affichent 85 k€ de moins que le comptage. Le directeur dit « c’est une erreur de saisie ».',h:'Une explication orale n’est pas une preuve.',o:[['Demander des justificatifs et refaire un comptage test','Vous obtenez des preuves.',[25,-20,-1],'9898'],['Accepter l’explication orale','Aucune preuve au dossier.',[5,15,1],'1122'],['Corriger les comptes vous-même','Vous perdez votre indépendance.',[0,20,-1],'1121']]},
-{t:'Phase 3 · Conclusion',q:'Le directeur financier vous suggère de minimiser l’anomalie dans le rapport pour garder une bonne relation.',h:'L’indépendance prime sur la relation commerciale.',o:[['Remonter à l’associé et documenter','Le bon réflexe professionnel.',[10,-20,-1],'9899'],['La mentionner seulement à l’oral','Rien d’écrit, risque de contestation.',[0,10,1],'3322'],['Céder pour garder le client','Faute professionnelle grave.',[0,25,2],'1111']]}]},
-{n:'Contrôle de gestion',col:'#2563eb',ro:'Contrôleur de gestion qui éclaire les décisions de la direction.',car:'Contrôleur de gestion, analyste de gestion, directeur de BU',ctx:'À la Brasserie Lumière, le budget dérape. La direction compte sur vos chiffres pour décider vite.',m:[['Marge brute','%',32],['Écart budgétaire',' k€',0],['Confiance de la direction','/10',6]],
-tw:['Vos analyses sont désormais citées en comité.','La direction doute de la fiabilité de vos chiffres.'],
-r:[{t:'Mois 1 · Un écart défavorable',q:'Les coûts matières dépassent le budget de 12 %. La direction demande une explication.',h:'Séparez l’effet prix, l’effet volume et le rendement.',o:[['Décomposer l’écart prix, quantité et rendement','Vous isolez la vraie cause.',[1,-40,1],'9888'],['L’attribuer à la conjoncture sans chiffrer','Peu convaincant.',[0,0,-1],'2233'],['Réduire le budget du mois suivant','Vous traitez le symptôme.',[0,-10,0],'3333']]},
-{t:'Mois 2 · Une décision de prix',q:'La direction veut baisser le prix de 8 % pour gagner du volume. Votre avis est attendu.',h:'Quel volume faut-il pour compenser la baisse de marge ?',o:[['Calculer le seuil de rentabilité et simuler 3 scénarios','Décision éclairée.',[-1,-20,1],'9898'],['Suivre l’intuition de la direction','Sans chiffres.',[-3,40,0],'2222'],['Refuser sans analyse','Peu constructif.',[0,0,-1],'3222']]},
-{t:'Mois 3 · Le tableau de bord',q:'Votre tableau de bord compte 25 indicateurs et personne ne le lit.',h:'Moins mais mieux : alignez sur la stratégie.',o:[['Garder 5 indicateurs clés liés à la stratégie','Lisible et utile.',[1,-10,2],'9899'],['Ajouter encore des indicateurs','Plus de bruit.',[0,10,-1],'2222'],['Remplacer par un seul indicateur global','Trop réducteur.',[0,0,0],'4444']]}]},
-{n:'Commerce',col:'#e8761b',ro:'Commercial B2B qui doit atteindre ses objectifs.',car:'Ingénieur d’affaires, key account manager, directeur commercial',ctx:'Chez NovaTech, vous vendez un logiciel de gestion. Il reste un trimestre pour atteindre l’objectif.',m:[['Pipeline','k€',400],['Taux de closing','%',20],['Relation client','/10',6]],
-tw:['Votre réputation de conseiller attire de nouveaux prospects.','Votre approche agressive refroidit certains clients.'],
-r:[{t:'Rendez-vous 1 · Le prix',q:'Un prospect vous dit : « c’est trop cher ». Que répondez-vous ?',h:'Un prix paraît cher quand la valeur n’est pas claire.',o:[['Poser des questions et chiffrer le retour sur investissement','Vous vendez de la valeur.',[80,5,1],'9788'],['Baisser le prix de 20 % tout de suite','Vous dévaluez l’offre.',[40,0,-1],'2333'],['Insister sur les fonctionnalités','Vous ne répondez pas à l’objection.',[10,-3,0],'3333']]},
-{t:'Rendez-vous 2 · Un client à risque',q:'Votre plus gros client menace de partir et réclame une remise exceptionnelle.',h:'Donnez en échange de quelque chose.',o:[['Offrir une remise limitée contre un engagement de 2 ans','Un échange gagnant-gagnant.',[60,5,1],'9888'],['Accepter la remise demandée','Elle fera jurisprudence.',[-20,0,-1],'2232'],['Refuser sèchement','Vous risquez de le perdre.',[-80,-5,-1],'3322']]},
-{t:'Fin de trimestre · Objectif manqué',q:'Vous êtes à 15 % sous l’objectif à trois semaines de la fin.',h:'Priorisez les opportunités réellement qualifiées.',o:[['Concentrer l’effort sur les opportunités les plus qualifiées','Efficace et honnête.',[100,5,2],'9888'],['Promettre des fonctionnalités qui n’existent pas','Dangereux à moyen terme.',[60,-20,-2],'1111'],['Envoyer un e-mail de relance à toute la base','Faible taux de réponse.',[10,-3,0],'3333']]}]},
-{n:'Logistique',col:'#0891b2',ro:'Responsable logistique qui garde la chaîne en mouvement.',car:'Responsable supply chain, planificateur, responsable d’entrepôt',ctx:'Distrimax livre 300 magasins. Une semaine chargée commence.',m:[['Taux de service','%',96],['Coûts',' k€',100],['Niveau de stock',' jours',20]],
-tw:['Vos clients prioritaires ont été bien servis.','Des retards s’accumulent sur plusieurs magasins.'],
-r:[{t:'Lundi · La grève',q:'Votre principal transporteur annonce une grève de 4 jours.',h:'Priorisez les clients et sécurisez un plan B.',o:[['Activer un transporteur secondaire pour les clients prioritaires','Plan B ciblé.',[-3,15,0],'8788'],['Tout expédier en express','Service préservé, coûts élevés.',[0,60,0],'4454'],['Attendre la fin de la grève','Retards garantis.',[-15,0,-3],'2122']]},
-{t:'Mercredi · La rupture',q:'Une référence phare est en rupture et le fournisseur annonce 3 semaines de délai.',h:'Regardez les ventes avant de commander.',o:[['Analyser les ventes, réaffecter les stocks et commander en partie par avion','Équilibre coût et service.',[-2,20,-3],'9888'],['Commander massivement','Risque de surstock.',[0,30,15],'3243'],['Ne rien faire','Vous perdez des ventes.',[-10,0,0],'1111']]},
-{t:'Vendredi · Le surstock',q:'Un entrepôt affiche 25 % de stock en excès, surtout sur les produits à faible rotation.',h:'Tous les produits ne se valent pas : classez-les.',o:[['Analyse ABC puis promotions ciblées','Libère de la trésorerie.',[0,-10,-8],'9889'],['Tout brader','Marge détruite.',[0,10,-12],'3333'],['Ignorer le problème','Coûts de stockage.',[0,5,2],'1111']]}]},
-{n:'Marketing',col:'#d6336c',ro:'Chef de produit qui fait vivre une marque.',car:'Chef de produit, responsable marketing digital, brand manager',ctx:'Kivo lance une boisson naturelle. Les ventes sont inférieures aux prévisions et le budget est limité.',m:[['Notoriété','%',8],['Budget restant',' k€',100],['Ventes',' k€',20]],
-tw:['Votre marque gagne en crédibilité.','Votre image se fragilise sur les réseaux.'],
-r:[{t:'Semaine 1 · Un lancement timide',q:'Les ventes sont 40 % sous l’objectif. Que faites-vous ?',h:'Comprenez avant d’agir.',o:[['Analyser les données clients et recentrer la cible','Décision fondée sur des faits.',[4,-10,10],'9888'],['Doubler la publicité','Plus de dépenses sans diagnostic.',[3,-30,5],'3333'],['Changer le packaging','Réaction impulsive.',[1,-15,2],'3333']]},
-{t:'Semaine 3 · Le budget',q:'Il vous reste 100 k€. Comment les répartissez-vous ?',h:'Testez petit avant de concentrer.',o:[['Tester 3 canaux avec des petits budgets, puis concentrer','Apprentissage rapide.',[6,-40,25],'9898'],['Tout miser sur un influenceur célèbre','Un seul pari.',[8,-80,10],'3223'],['Faire une grande promotion','Rentable ? Non.',[3,-50,15],'3333']]},
-{t:'Semaine 5 · La polémique',q:'Une polémique sur un ingrédient circule sur les réseaux sociaux.',h:'La transparence rassure.',o:[['Répondre vite, avec des preuves','Réponse honnête et rapide.',[2,-5,5],'9889'],['Supprimer les commentaires','Effet boomerang.',[-3,0,-5],'2111'],['Ne rien dire','La rumeur grandit.',[-4,0,-8],'2122']]}]},
-{n:'Entrepreneuriat',col:'#d99a0b',ro:'Fondateur qui transforme une idée en entreprise.',car:'Fondateur, intrapreneur, responsable innovation',ctx:'Votre start-up GreenBox vend des paniers anti-gaspillage. Vous disposez de 150 k€ et d’une idée à prouver.',m:[['Trésorerie',' k€',150],['Clients actifs','',30],['Moral de l’équipe','/10',8]],
-tw:['Votre approche rigoureuse attire un business angel.','Vos décisions hasardeuses fatiguent l’équipe.'],
-r:[{t:'Mois 1 · Le produit',q:'Vous avez une idée, mais peu de retours. Comment avancez-vous ?',h:'Validez avant de construire.',o:[['Interroger 20 clients et lancer une version simple','Test rapide.',[-10,30,0],'9888'],['Développer toutes les fonctionnalités pendant 6 mois','Risque élevé.',[-90,0,-1],'2233'],['Lancer une grosse publicité','Sans offre validée.',[-40,10,-1],'3223']]},
-{t:'Mois 4 · La levée',q:'Un investisseur propose 200 k€ contre 40 % du capital.',h:'Valorisation, pacte, besoins réels.',o:[['Négocier la valorisation et le pacte d’associés','Équilibre.',[200,0,1],'9898'],['Accepter immédiatement','Vous cédez beaucoup.',[200,0,-2],'3223'],['Refuser et continuer seul','Croissance ralentie.',[0,0,0],'4443']]},
-{t:'Mois 8 · L’équipe',q:'Votre cofondateur veut réduire son implication, sans cadre formel.',h:'Clarifiez rôles et droits.',o:[['Formaliser rôles, objectifs et vesting','Règles claires.',[0,10,2],'9899'],['Éviter le sujet','Tensions à venir.',[0,-10,-3],'2111'],['Le remplacer brutalement','Conflit.',[-20,-5,-3],'2222']]}]},
-{n:'Management',col:'#3f8f2f',ro:'Directeur d’unité qui conduit le changement.',car:'Chef d’équipe, responsable d’unité, directeur des opérations',ctx:'Chez Altis, deux équipes fusionnent. Le moral est fragile et vous êtes responsable de la transition.',m:[['Performance','/100',70],['Moral','/10',6],['Confiance de la direction','/10',7]],
-tw:['Votre équipe se soude après vos choix.','Des tensions apparaissent dans les équipes.'],
-r:[{t:'Semaine 1 · L’annonce',q:'La fusion des équipes est décidée. Comment l’annoncez-vous ?',h:'Les rumeurs avancent plus vite que vous.',o:[['Réunir tout le monde, expliquer les raisons et répondre','Transparence.',[-5,2,1],'9888'],['Envoyer un e-mail court','Impersonnel.',[-5,-2,0],'3333'],['Attendre d’avoir tous les détails','Rumeurs.',[-10,-3,-1],'2122']]},
-{t:'Semaine 3 · Le collaborateur clé',q:'Votre meilleur expert, démotivé, envisage de partir.',h:'Écoutez avant de proposer.',o:[['Un entretien individuel pour comprendre','Écoute active.',[5,2,1],'9899'],['Lui promettre une prime','Solution à court terme.',[0,0,-1],'3334'],['Ne rien faire','Risque de départ.',[-10,-2,-1],'1111']]},
-{t:'Semaine 5 · Le conflit',q:'Deux managers s’opposent sur les priorités de l’équipe fusionnée.',h:'Cherchez un objectif commun.',o:[['Organiser une médiation avec des objectifs communs','Désamorce le conflit.',[8,2,2],'9899'],['Trancher sans les écouter','Frustrations.',[3,-2,0],'3333'],['Les laisser régler seuls','Le conflit s’enlise.',[-8,-2,-1],'2111']]}]}
-];
-let S=null,hist=[],view='home',cur=0;
-try{hist=JSON.parse(localStorage.getItem('dw-hist2')||'[]')}catch(e){}
-const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const col=()=>app.style.setProperty('--acc',view==='setup'||view==='play'||view==='report'?F[cur].col:'#6d4fd1');
-function nav(v){view=v;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));scrollTo(0,0);col();({home,missions,dash,setup,play,report})[v]()}
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>nav(b.dataset.v));
-const best=n=>Math.max(0,...hist.filter(h=>h.f===n).map(h=>h.total));
-function cards(){return `<div class="grid">`+F.map((f,i)=>`<button class="card" style="--f:${f.col}" data-i="${i}">${scene(i,f.col)}<div class="tx"><h3>${f.n}</h3><span class="muted">${f.ro}</span><span class="pill" style="background:${f.col}22;color:${f.col}">${best(f.n)?'Meilleur score : '+best(f.n):'3 décisions · 5 min'}</span></div></button>`).join('')+`</div>`}
-function wire(){document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{cur=+c.dataset.i;nav('setup')})}
-function home(){app.innerHTML=`<div class="hero"><div><h1>Faites le métier avant d’avoir le poste.</h1><p class="lede">Huit spécialités, huit situations professionnelles réalistes. Décidez sous pression, constatez les conséquences et recevez une orientation métier personnalisée.</p><div class="row"><button class="btn" id="go">Choisir ma spécialité</button></div></div>${scene(0,'#6d4fd1').replace('<svg','<svg style="border-radius:18px;width:100%;color:#6d4fd1"')}</div><h2>Spécialités</h2>${cards()}`;
-$('#go').onclick=()=>nav('missions');wire()}
-function missions(){app.innerHTML=`<h2>Choisissez votre spécialité</h2><p class="muted">Toutes les missions sont jouables : 3 décisions, avec des événements qui dépendent de vos choix.</p>${cards()}`;wire()}
-function setup(){const f=F[cur],o=S&&S.cfg||{mode:'learn',diff:'std'},cfg={...o};
-app.innerHTML=`<div class="top"><div style="color:${f.col}">${scene(cur,f.col)}</div><div><h2>${f.n}</h2><p class="muted" style="margin:0 0 6px">${f.ro}</p><div class="panel memo"><small>Note de service</small><p style="margin:4px 0 0">${f.ctx}</p></div></div></div>
-<div class="panel"><h3>Mode</h3><div class="seg" id="sm"><button data-v="learn" class="${o.mode=='learn'?'on':''}">Apprentissage (indices et retours)</button><button data-v="pro" class="${o.mode=='pro'?'on':''}">Professionnel (sans aide)</button></div>
-<h3 style="margin-top:20px">Difficulté</h3><div class="seg" id="sd"><button data-v="std" class="${o.diff=='std'?'on':''}">Standard</button><button data-v="hard" class="${o.diff=='hard'?'on':''}">Difficile (barème plus exigeant)</button></div>
-<p style="margin-top:22px"><button class="btn" id="st">Lancer la simulation</button></p></div>`;
-for(const [id,k] of [['sm','mode'],['sd','diff']])$('#'+id).onclick=e=>{const v=e.target.dataset.v;if(!v)return;cfg[k]=v;[...$('#'+id).children].forEach(b=>b.classList.toggle('on',b.dataset.v===v))};
-$('#st').onclick=()=>{S={cfg,v:f.m.map(x=>x[2]),i:0,sc:[0,0,0,0],log:[],r:null};nav('play')}}
-function play(){const f=F[cur],r=f.r[S.i],learn=S.cfg.mode=='learn';S.r=r;
-let tw='';if(S.i==2){const a=S.sc.reduce((x,y)=>x+y,0)/(S.i*40);tw=`<p class="tw"><b>Événement.</b> ${f.tw[a>=.65?0:1]}</p>`}
-const mt=f.m.map((x,k)=>`<div class="m"><small>${x[0]}</small><strong>${S.v[k]}${x[1]}</strong></div>`).join('')+`<div class="m"><small>Décision</small><strong>${S.i+1} sur 3</strong></div>`;
-app.innerHTML=`<div class="meters">${mt}</div><div class="panel memo"><small>${esc(r.t)}</small>${tw}<h2>${esc(r.q)}</h2>${learn?'<button class="btn ghost" id="hb">Afficher un indice</button><div class="hint" id="ht">'+esc(r.h)+'</div>':''}<div class="opts" id="op">${r.o.map((o,i)=>`<button class="opt" data-i="${i}"><b>${esc(o[0])}</b>${learn?'<span>'+esc(o[1])+'</span>':''}</button>`).join('')}</div><div id="fbk"></div></div>`;
-if(learn)$('#hb').onclick=()=>{$('#ht').style.display='block'};
-$('#op').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)choose(+b.dataset.i)}}
-function choose(i){const f=F[cur],r=S.r,o=r.o[i],hard=S.cfg.diff=='hard',learn=S.cfg.mode=='learn';
-o[2].forEach((d,k)=>S.v[k]=Math.max(0,S.v[k]+d));
-const q=o[3].split('').map(n=>Math.max(0,+n-(hard?1:0)));q.forEach((n,k)=>S.sc[k]+=n);
-const sum=x=>x[3].split('').reduce((a,b)=>a+ +b,0),bst=r.o.reduce((a,b)=>sum(b)>sum(a)?b:a);
-S.log.push({t:r.t,pick:o[0],best:bst[0],ok:bst===o});
-document.querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===i)b.classList.add('pick');if(learn&&r.o[k]===bst)b.classList.add('best')});
-const last=S.i>=2;
-$('#fbk').innerHTML=(learn?`<div class="fb"><b>${bst===o?'Excellent choix.':'Une meilleure option existait :'}</b> ${bst===o?esc(o[1]):esc(bst[0])+'. '+esc(bst[1])}</div>`:'')+`<p><button class="btn" id="nx">${last?'Voir mon rapport':'Décision suivante'}</button></p>`;
-$('#nx').onclick=()=>{if(last)finish();else{S.i++;play();scrollTo(0,0)}}}
-function finish(){const pct=S.sc.map(v=>Math.round(v/30*100)),total=Math.round(pct.reduce((a,b)=>a+b,0)/4);
-S.res={pct,total};hist.unshift({f:F[cur].n,d:new Date().toLocaleDateString('fr-FR'),mode:S.cfg.mode,diff:S.cfg.diff,total});hist=hist.slice(0,30);
-try{localStorage.setItem('dw-hist2',JSON.stringify(hist))}catch(e){}nav('report')}
-function report(){const f=F[cur],{pct,total}=S.res,idx=pct.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]),top=SK[idx[0][1]],low=SK[idx[3][1]];
-const grade=total>=80?'Excellent':total>=60?'Solide':total>=40?'À consolider':'Atterrissage difficile';
-const tips={'Analyse':'Rassemblez des données avant d’agir.','Gestion des risques':'Privilégiez les options qui limitent la perte possible.','Prise de décision':'Pesez les effets à court et à long terme avant de vous engager.','Adaptabilité':'Quand la situation change, révisez votre plan.'};
-const ori=total>=60?`Vos réflexes correspondent bien à ce métier. Pistes : ${f.car}.`:`Ce domaine demande encore de la pratique. Rejouez en mode apprentissage, puis visez : ${f.car}.`;
-app.innerHTML=`<h2>Rapport de mission · ${f.n}</h2><div class="panel"><div class="row"><div><div class="muted">Score global</div><div style="font:800 3.4rem 'Bricolage Grotesque';color:var(--acc)">${total}<span class="muted" style="font-size:1.3rem">/100</span></div></div><div><span class="pill">${grade}</span><p style="margin:6px 0 0">${S.v.map((v,k)=>f.m[k][0]+' : '+v+f.m[k][1]).join(' · ')}</p></div></div>${SK.map((s,i)=>`<div class="sk"><span>${s}</span><div class="bar"><i style="width:${pct[i]}%"></i></div><b>${pct[i]}</b></div>`).join('')}</div>
-<div class="grid" style="margin-top:14px"><div class="panel"><h3>Point fort</h3><p>${top}. ${tips[top]}</p></div><div class="panel"><h3>À améliorer</h3><p>${low}. ${tips[low]}</p></div><div class="panel"><h3>Orientation professionnelle</h3><p>${ori}</p></div></div>
-<div class="panel" style="margin-top:14px"><h3>Vos décisions</h3><div style="overflow-x:auto"><table><tr><th>Étape</th><th>Votre choix</th><th>Meilleure option</th></tr>${S.log.map(l=>`<tr><td>${esc(l.t)}</td><td>${esc(l.pick)}</td><td>${l.ok?'Même choix':esc(l.best)}</td></tr>`).join('')}</table></div></div>
-<p class="row"><button class="btn" id="again">Rejouer avec une autre stratégie</button><button class="btn ghost" id="oth">Autre spécialité</button><button class="btn ghost" id="dd">Ma progression</button></p>`;
-$('#again').onclick=()=>nav('setup');$('#oth').onclick=()=>nav('missions');$('#dd').onclick=()=>nav('dash')}
-function dash(){const tried=F.filter(f=>best(f.n)).length,bs=hist.length?Math.max(...hist.map(h=>h.total)):0,av=hist.length?Math.round(hist.reduce((a,h)=>a+h.total,0)/hist.length):0;
-app.innerHTML=`<h2>Ma progression</h2><div class="meters"><div class="m"><small>Missions terminées</small><strong>${hist.length}</strong></div><div class="m"><small>Meilleur score</small><strong>${bs}</strong></div><div class="m"><small>Moyenne</small><strong>${av}</strong></div><div class="m"><small>Spécialités essayées</small><strong>${tried} sur 8</strong></div></div>
-<div class="panel">${hist.length?`<div style="overflow-x:auto"><table><tr><th>Date</th><th>Spécialité</th><th>Mode</th><th>Niveau</th><th>Score</th></tr>${hist.map(h=>`<tr><td>${h.d}</td><td>${h.f}</td><td>${h.mode=='learn'?'Apprentissage':'Professionnel'}</td><td>${h.diff=='hard'?'Difficile':'Standard'}</td><td>${h.total}</td></tr>`).join('')}</table></div>`:'<p class="muted">Aucune mission pour l’instant. Choisissez une spécialité pour commencer.</p><button class="btn" id="g2">Choisir ma spécialité</button>'}</div>`;
-const g=$('#g2');if(g)g.onclick=()=>nav('missions')}
-nav('home');
-</script>
+<script src="js/core/utils.js"></script>
+<script src="js/core/constants.js"></script>
+<script src="js/core/illustrations.js"></script>
+<script src="js/core/audio.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/data/levels.js"></script>
+<script src="js/data/speakers.js"></script>
+<script src="js/data/fields/finance.js"></script>
+<script src="js/data/fields/audit.js"></script>
+<script src="js/data/fields/controle-gestion.js"></script>
+<script src="js/data/fields/commerce.js"></script>
+<script src="js/data/fields/logistique.js"></script>
+<script src="js/data/fields/marketing.js"></script>
+<script src="js/data/fields/entrepreneuriat.js"></script>
+<script src="js/data/fields/management.js"></script>
+<script src="js/data/banks/finance.js"></script>
+<script src="js/data/banks/audit.js"></script>
+<script src="js/data/banks/controle-gestion.js"></script>
+<script src="js/data/banks/commerce.js"></script>
+<script src="js/data/banks/logistique.js"></script>
+<script src="js/data/banks/marketing.js"></script>
+<script src="js/data/banks/entrepreneuriat.js"></script>
+<script src="js/data/banks/management.js"></script>
+<script src="js/engine/rounds.js"></script>
+<script src="js/views/home.js"></script>
+<script src="js/views/missions.js"></script>
+<script src="js/views/setup.js"></script>
+<script src="js/views/play.js"></script>
+<script src="js/views/report.js"></script>
+<script src="js/views/dash.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
