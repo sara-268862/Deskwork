@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deskwork – Apprendre en exerçant le métier</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--panel:#fff;--ink:#14213d;--mute:#5b6679;--line:#d3d9e2;--acc:#0f7b6c;--accb:#e6f3f1;--warn:#c2410c;--warnb:#fdeee6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1624;--panel:#18223a;--ink:#e8edf6;--mute:#9aa6bb;--line:#2b3957;--acc:#3fc1ac;--accb:#12302f;--warn:#f08a5d;--warnb:#3a2218}}
+:root[data-theme="dark"]{--bg:#0f1624;--panel:#18223a;--ink:#e8edf6;--mute:#9aa6bb;--line:#2b3957;--acc:#3fc1ac;--accb:#12302f;--warn:#f08a5d;--warnb:#3a2218}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'IBM Plex Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.1;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800}h2{font-size:1.7rem}h3{font-size:1.15rem}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.logo{font:800 1.25rem 'Bricolage Grotesque';margin-right:auto}
+nav button{background:none;border:0;color:var(--mute);font:500 .95rem inherit;font-family:inherit;padding:8px 10px;cursor:pointer;border-radius:6px}
+nav button.on,nav button:hover{color:var(--ink);background:var(--accb)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+main{padding:36px 0 60px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+@media(max-width:720px){.hero{grid-template-columns:1fr}}
+.lede{color:var(--mute);font-size:1.1rem;max-width:52ch}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:12px 20px;font:600 1rem inherit;font-family:inherit;cursor:pointer}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.memo{border-left:5px solid var(--warn);border-radius:4px 10px 10px 4px}
+.memo small{color:var(--warn);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;text-align:left;font:inherit;color:inherit}
+.field .tag{font-size:.8rem;color:var(--mute)}
+.field.live{border-color:var(--acc);border-width:2px;cursor:pointer}
+.field.soon{opacity:.62}
+.pill{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:99px;background:var(--accb);color:var(--acc);font-weight:600;width:fit-content}
+.pill.g{background:var(--line);color:var(--mute)}
+.opts{display:grid;gap:10px;margin:16px 0}
+.opt{text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer}
+.opt:hover{border-color:var(--acc)}
+.opt[disabled]{cursor:default}.opt.best{border-color:var(--acc);background:var(--accb)}.opt.pick{outline:2px solid var(--ink)}
+.opt b{display:block}.opt span{color:var(--mute);font-size:.92rem}
+.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:560px){.meters{grid-template-columns:repeat(2,1fr)}}
+.m{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.m small{color:var(--mute);display:block}.m strong{font:700 1.5rem 'Bricolage Grotesque'}
+.m.bad strong{color:var(--warn)}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sk{display:grid;grid-template-columns:170px 1fr 44px;gap:12px;align-items:center;margin:10px 0}
+@media(max-width:520px){.sk{grid-template-columns:110px 1fr 38px}}
+.hint{background:var(--accb);border-radius:8px;padding:10px 14px;margin:10px 0;display:none}
+.fb{background:var(--warnb);border-radius:8px;padding:10px 14px;margin-top:12px}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--panel);border:0;color:var(--ink);padding:8px 14px;font:inherit;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
+.muted{color:var(--mute)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="logo">Deskwork</div>
+<nav><button data-v="home" class="on">Accueil</button><button data-v="missions">Missions</button><button data-v="dash">Ma progression</button></nav>
+</div></header>
+<main><div class="wrap" id="app"></div></main>
+
+<script>
+const $=s=>document.querySelector(s), app=$('#app');
+const SK=['Analyse','Gestion des risques','Prise de décision','Adaptabilité'];
+const FIELDS=[
+ {n:'Finance',d:'Pilotez la trésorerie d’une entreprise en crise comme directeur financier.',live:1},
+ {n:'Cybersécurité',d:'Contenez une intrusion pendant que la direction exige des réponses.'},
+ {n:'Management',d:'Conduisez une équipe à travers une restructuration.'},
+ {n:'Marketing',d:'Sauvez le lancement d’un produit avec un budget serré.'},
+ {n:'Entrepreneuriat',d:'Décidez comment dépenser votre première levée de fonds.'},
+ {n:'Santé',d:'Répartissez les ressources d’un service d’urgences saturé.'}];
+// c = trésorerie (k€), t = confiance des fournisseurs, r = risque ; s = [analyse, risques, décision, adaptabilité] sur 10
+const R=[
+ {t:'Semaine 1 · Le retard de paiement',q:'Votre plus gros client, qui vous doit 200 k€, a payé en retard. La paie de 210 k€ tombe dans deux semaines et les factures fournisseurs s’élèvent à 190 k€. Que faites-vous en premier ?',h:'Cherchez des options qui font entrer de la trésorerie sans abîmer des relations dont vous aurez besoin.',o:[
+  {l:'Négocier un délai de 60 jours avec votre principal fournisseur',x:'Cela coûte de la bonne volonté, mais vous demandez avant de faire défaut.',c:90,t:-1,r:0,s:[8,7,7,6]},
+  {l:'Utiliser la ligne de crédit d’urgence à 11 %',x:'Rapide, mais cela ajoute de la dette et des intérêts.',c:150,t:0,r:1,s:[5,4,6,3]},
+  {l:'Retarder discrètement tous les paiements fournisseurs',x:'Vous gardez du cash, mais les fournisseurs le remarqueront.',c:190,t:-3,r:2,s:[2,1,3,2]},
+  {l:'Offrir 3 % de remise au client pour un paiement cette semaine',x:'Vous perdez 6 k€ pour encaisser 194 k€.',c:94,t:0,r:0,s:[7,6,7,7]}]},
+ {t:'Semaine 3 · Réduire les coûts',q:'Le conseil d’administration veut des dépenses en baisse. Vous avez peu de temps et des données imparfaites.',h:'Les économies coûtent moins cher quand on sait où va réellement l’argent.',o:[
+  {l:'Réduire chaque service de 10 %',x:'Simple et rapide, mais grossier.',c:60,t:0,r:1,s:[3,3,4,3]},
+  {l:'Auditer les dépenses puis couper de façon ciblée',x:'Démarrage plus lent, meilleures économies.',c:40,t:0,r:0,s:[9,8,8,7]},
+  {l:'Geler les embauches et annuler le marketing',x:'Cela économise du cash mais pénalise les ventes futures.',c:30,t:0,r:1,s:[5,5,5,5]},
+  {l:'Ignorer les coûts et viser de nouveaux revenus',x:'Optimiste. Le chiffre d’affaires n’est jamais garanti.',c:0,t:0,r:2,s:[2,2,3,2]}]},
+ {t:'Semaine 5 · Une offre d’investissement',q:'Un fournisseur propose une machine qui réduirait vos coûts de production de 12 %. Elle coûte 120 k€ à l’achat.',h:'Un bon investissement peut être une mauvaise idée s’il vide vos réserves.',o:[
+  {l:'Acheter la machine comptant',x:'Plus grosse économie à long terme, plus gros choc de trésorerie.',c:-120,t:0,r:1,s:[4,3,5,4]},
+  {l:'La louer pour 4 k€ par mois',x:'Vous gardez vos réserves et obtenez l’économie.',c:-12,t:0,r:0,s:[8,7,8,7]},
+  {l:'Refuser et protéger les réserves',x:'Prudent, mais vous perdez l’économie.',c:0,t:0,r:0,s:[6,7,5,5]},
+  {l:'Placer le cash disponible en actions à court terme',x:'Vous jouez la paie en bourse.',c:-50,t:0,r:2,s:[2,1,3,2]}]}
+];
+function finalRound(st){
+ if(st.t<=-3)return{t:'Semaine 7 · Événement : les fournisseurs exigent un prépaiement',q:'Le bruit court que vous avez retardé des paiements. Votre principal fournisseur veut désormais 80 k€ d’avance avant d’expédier la prochaine commande.',h:'La confiance que vous avez abîmée plus tôt a maintenant un prix.',o:[
+  {l:'Payer l’avance sur vos réserves',x:'La production continue.',c:-80,t:-1,r:0,s:[5,4,6,5]},
+  {l:'Proposer un échéancier avec garantie personnelle de la direction',x:'Reconstruit la confiance, à un certain coût.',c:-30,t:1,r:1,s:[8,6,7,9]},
+  {l:'Passer à un nouveau fournisseur plus cher',x:'Lent et coûteux.',c:-60,t:0,r:1,s:[5,5,5,6]}]};
+ if(st.r>=4)return{t:'Semaine 7 · Événement : choc de change',q:'Une variation de change augmente de 60 k€ le coût de vos matières importées, révélant les risques accumulés jusqu’ici.',h:'Le risque s’accumule en silence jusqu’à ce que le marché le teste.',o:[
+  {l:'Couvrir dès maintenant vos achats futurs',x:'Vous payez des frais et plafonnez l’exposition.',c:-70,t:0,r:-2,s:[8,9,8,8]},
+  {l:'Absorber le surcoût et espérer un retournement',x:'Peu cher aujourd’hui, dangereux demain.',c:-60,t:0,r:1,s:[3,2,3,3]},
+  {l:'Répercuter la hausse sur les clients',x:'Protège la marge, peut faire fuir des clients.',c:-20,t:0,r:0,s:[6,6,6,7]}]};
+ return{t:'Semaine 7 · Événement : une grosse commande arrive',q:'Un distributeur veut une commande de 300 k€, livrée sous 6 semaines. Il faut avancer 100 k€ de fonds de roulement.',h:'La croissance consomme du cash avant d’en créer.',o:[
+  {l:'Accepter et la financer par un acompte client',x:'Le client partage le risque.',c:90,t:0,r:0,s:[9,8,9,9]},
+  {l:'Accepter et la financer sur vos réserves',x:'Fort potentiel, filet de sécurité mince.',c:-100,t:0,r:2,s:[5,3,6,5]},
+  {l:'Refuser par prudence',x:'Vous renoncez à une chance de redressement.',c:0,t:0,r:0,s:[4,6,3,3]}]};
+}
+let S=null, hist=[], view='home';
+try{hist=JSON.parse(localStorage.getItem('dw-hist')||'[]')}catch(e){}
+function save(){try{localStorage.setItem('dw-hist',JSON.stringify(hist))}catch(e){}}
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function nav(v){view=v;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));scrollTo(0,0);render()}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>nav(b.dataset.v));
+function render(){({home:home,missions:missions,dash:dash,setup:setup,play:play,report:report})[view]()}
+function home(){app.innerHTML=`<div class="hero"><div><h1>Faites le métier avant d’avoir le poste.</h1>
+<p class="lede">Entrez dans un vrai rôle professionnel, décidez sous pression et observez ce que provoquent vos choix. Ici, les erreurs ne coûtent rien. Elles enseignent beaucoup.</p>
+<div class="row"><button class="btn" id="go">Commencer la mission Finance</button><button class="btn ghost" id="mm">Voir les domaines</button></div></div>
+<div class="panel memo"><small>Note de service</small><h3>Vous êtes le nouveau directeur financier</h3><p class="muted" style="margin:0">Halden Composants a 480 k€ en banque, une paie dans deux semaines et un client qui n’a pas payé. Le conseil attend un plan vendredi.</p></div></div>
+<div class="grid" style="margin-top:40px">
+<div class="panel"><h3>Des décisions qui ont des conséquences</h3><p class="muted">Chaque choix modifie la trésorerie, la confiance des fournisseurs et le risque, et façonne l’événement suivant.</p></div>
+<div class="panel"><h3>Mode apprentissage ou professionnel</h3><p class="muted">Profitez d’indices et de retours immédiats pour apprendre. Coupez-les quand vous voulez un vrai test.</p></div>
+<div class="panel"><h3>Un rapport exploitable</h3><p class="muted">Des scores en analyse, risques, décision et adaptabilité, et ce qu’aurait été un meilleur choix.</p></div></div>`;
+$('#go').onclick=()=>nav('setup');$('#mm').onclick=()=>nav('missions')}
+function missions(){app.innerHTML=`<h2>Choisissez un domaine</h2><p class="muted">Une mission est ouverte pour l’instant. Les autres sont en préparation.</p><div class="grid">`+FIELDS.map((f,i)=>`<button class="panel field ${f.live?'live':'soon'}" ${f.live?'':'disabled'}><span class="pill ${f.live?'':'g'}">${f.live?'Jouable':'Bientôt disponible'}</span><h3>${f.n}</h3><span class="muted">${f.d}</span>${f.live?'<span class="tag">Crise de trésorerie · 4 décisions · environ 5 minutes</span>':''}</button>`).join('')+`</div>`;
+document.querySelectorAll('.field.live').forEach(b=>b.onclick=()=>nav('setup'))}
+function setup(){const o=S&&S.setup||{mode:'learn',diff:'std'};
+app.innerHTML=`<h2>Crise de trésorerie chez Halden Composants</h2><p class="muted" style="max-width:60ch">Vous avez sept semaines pour garder l’entreprise solvable. La trésorerie, la confiance des fournisseurs et le risque évoluent avec vos décisions.</p>
+<div class="panel"><h3>Mode</h3><div class="seg" id="sm"><button data-v="learn" class="${o.mode=='learn'?'on':''}">Apprentissage (indices et retours)</button><button data-v="pro" class="${o.mode=='pro'?'on':''}">Professionnel (sans aide)</button></div>
+<h3 style="margin-top:20px">Difficulté</h3><div class="seg" id="sd"><button data-v="std" class="${o.diff=='std'?'on':''}">Standard (480 k€ en caisse)</button><button data-v="hard" class="${o.diff=='hard'?'on':''}">Difficile (350 k€ en caisse)</button></div>
+<p style="margin-top:24px"><button class="btn" id="st">Lancer la simulation</button></p></div>`;
+const cfg={...o};
+for(const [id,k] of [['sm','mode'],['sd','diff']])$('#'+id).onclick=e=>{const v=e.target.dataset.v;if(!v)return;cfg[k]=v;[...$('#'+id).children].forEach(b=>b.classList.toggle('on',b.dataset.v===v))};
+$('#st').onclick=()=>{S={setup:cfg,cash:cfg.diff=='hard'?350:480,t:0,r:0,i:0,sc:[0,0,0,0],log:[],round:null,done:false};nav('play')}}
+function meters(){const m=(l,v,bad)=>`<div class="m ${bad?'bad':''}"><small>${l}</small><strong>${v}</strong></div>`;
+return `<div class="meters">${m('Trésorerie',S.cash+' k€',S.cash<150)}${m('Confiance fournisseurs',(S.t>0?'+':'')+S.t,S.t<=-2)}${m('Exposition au risque',S.r,S.r>=3)}${m('Décision',(S.i+1)+' sur 4')}</div>`}
+function play(){const r=S.i<3?R[S.i]:finalRound(S);S.round=r;const learn=S.setup.mode=='learn';
+app.innerHTML=`${meters()}<div class="panel memo"><small>${esc(r.t)}</small><h2>${esc(r.q)}</h2>
+${learn?'<button class="btn ghost" id="hb">Afficher un indice</button><div class="hint" id="ht">'+esc(r.h)+'</div>':''}
+<div class="opts" id="op">${r.o.map((o,i)=>`<button class="opt" data-i="${i}"><b>${esc(o.l)}</b>${learn?'<span>'+esc(o.x)+'</span>':''}</button>`).join('')}</div><div id="fbk"></div></div>`;
+if(learn)$('#hb').onclick=()=>{$('#ht').style.display='block'};
+$('#op').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;choose(+b.dataset.i)}}
+function choose(i){const r=S.round,o=r.o[i];
+S.cash+=o.c;S.t+=o.t;S.r=Math.max(0,S.r+o.r);o.s.forEach((v,k)=>S.sc[k]+=v);
+const tot=x=>x.s.reduce((a,b)=>a+b,0),best=r.o.reduce((a,b)=>tot(b)>tot(a)?b:a);
+S.log.push({t:r.t,pick:o.l,best:best.l,ok:best===o});
+const learn=S.setup.mode=='learn';
+document.querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===i)b.classList.add('pick');if(learn&&r.o[k]===best)b.classList.add('best')});
+const last=S.i>=3||S.cash<0;
+$('#fbk').innerHTML=(learn?`<div class="fb"><b>${best===o?'Excellent choix.':'Une meilleure option existait :'}</b> ${best===o?'Il équilibrait trésorerie, confiance et risque.':esc(best.l)+'. Comparez comment chaque option arbitre entre trésorerie, confiance et risque.'}</div>`:'')+`<p><button class="btn" id="nx">${last?'Voir mon rapport':'Décision suivante'}</button></p>`;
+$('#nx').onclick=()=>{if(last){finish()}else{S.i++;play();scrollTo(0,0)}}}
+function finish(){const n=S.log.length,pct=S.sc.map(v=>Math.round(v/(n*10)*100));
+let total=Math.round(pct.reduce((a,b)=>a+b,0)/4);const insolvent=S.cash<0;if(insolvent)total=Math.max(0,total-25);
+S.res={pct,total,insolvent};S.done=true;
+hist.unshift({d:new Date().toLocaleDateString('fr-FR'),mode:S.setup.mode,diff:S.setup.diff,total,cash:S.cash});hist=hist.slice(0,20);save();nav('report')}
+function report(){const{pct,total,insolvent}=S.res;
+const idx=pct.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]),top=SK[idx[0][1]],low=SK[idx[3][1]];
+const grade=total>=80?'Excellent':total>=60?'Solide':total>=40?'À consolider':'Atterrissage difficile';
+const tips={'Analyse':'Rassemblez des données avant d’agir. Un audit ou un calcul rapide vaut souvent mieux qu’une règle grossière.','Gestion des risques':'Privilégiez les options qui limitent la perte possible : location, couverture, partage du risque.','Prise de décision':'Pesez le cash à court terme et les effets à long terme avant de vous engager.','Adaptabilité':'Quand un événement change la donne, révisez votre plan au lieu de le défendre.'};
+app.innerHTML=`<h2>Rapport de mission</h2><div class="panel"><div class="row"><div><div class="muted">Score global</div><div style="font:800 3.4rem 'Bricolage Grotesque'">${total}<span class="muted" style="font-size:1.3rem">/100</span></div></div>
+<div><span class="pill">${grade}</span><p style="margin:6px 0 0">${insolvent?'L’entreprise est tombée à court de trésorerie. Protégez vos réserves plus tôt.':'Halden termine avec '+S.cash+' k€ en caisse.'}</p></div></div>
+${SK.map((s,i)=>`<div class="sk"><span>${s}</span><div class="bar"><i style="width:${pct[i]}%"></i></div><b>${pct[i]}</b></div>`).join('')}</div>
+<div class="grid" style="margin-top:14px"><div class="panel"><h3>Point fort</h3><p>${top}. ${tips[top]}</p></div><div class="panel"><h3>À améliorer</h3><p>${low}. ${tips[low]}</p></div></div>
+<div class="panel" style="margin-top:14px"><h3>Vos décisions</h3><div style="overflow-x:auto"><table><tr><th>Étape</th><th>Votre choix</th><th>Meilleure option</th></tr>${S.log.map(l=>`<tr><td>${esc(l.t)}</td><td>${esc(l.pick)}</td><td>${l.ok?'Même choix':esc(l.best)}</td></tr>`).join('')}</table></div></div>
+<p class="row"><button class="btn" id="again">Rejouer avec une autre stratégie</button><button class="btn ghost" id="dd">Voir ma progression</button></p>`;
+$('#again').onclick=()=>nav('setup');$('#dd').onclick=()=>nav('dash')}
+function dash(){const best=hist.length?Math.max(...hist.map(h=>h.total)):0,avg=hist.length?Math.round(hist.reduce((a,h)=>a+h.total,0)/hist.length):0;
+app.innerHTML=`<h2>Ma progression</h2><div class="meters"><div class="m"><small>Missions terminées</small><strong>${hist.length}</strong></div><div class="m"><small>Meilleur score</small><strong>${best}</strong></div><div class="m"><small>Moyenne</small><strong>${avg}</strong></div><div class="m"><small>Domaines ouverts</small><strong>1 sur 6</strong></div></div>
+<div class="panel">${hist.length?`<div style="overflow-x:auto"><table><tr><th>Date</th><th>Mode</th><th>Niveau</th><th>Score</th><th>Trésorerie finale</th></tr>${hist.map(h=>`<tr><td>${h.d}</td><td>${h.mode=='learn'?'Apprentissage':'Professionnel'}</td><td>${h.diff=='hard'?'Difficile':'Standard'}</td><td>${h.total}</td><td>${h.cash} k€</td></tr>`).join('')}</table></div>`:'<p class="muted">Aucune mission pour l’instant. Terminez la mission Finance et vos résultats apparaîtront ici.</p><button class="btn" id="g2">Commencer la mission Finance</button>'}</div>`;
+const g=$('#g2');if(g)g.onclick=()=>nav('setup')}
+render();
+</script>
+</body>
+</html>
